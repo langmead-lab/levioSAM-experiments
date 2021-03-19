@@ -1,6 +1,7 @@
 # Alignment with alternative reference genomes
 
 In this tutorial, we will demonstrate an alignment pipeline that utilized an alternative reference genome and `levioSAM` to enchance accuracy.
+We use 8 threads whenever the program supports multi-threaded processing.
 
 ## Software and datasets involved in this pipeline
 Software:
@@ -31,12 +32,13 @@ wget -P ${DIR_DATA}/1kg_vcf/ http://ftp.1000genomes.ebi.ac.uk/vol1/ftp/data_coll
 ```
 
 
-
 ## Simulate data
 
 We will use a simulated dataset in this tutorial. The advantage of simulated sequencing data is the advent of a ground truth.
 
-We use the genotypes from the first haplotype of individual NA12878 from the 1000 Genomes Project (1KGP). We only use chr21 data for simplicity.
+We use the genotypes from the first haplotype of individual NA12878 from the 1000 Genomes Project (1KGP).
+We only use chr21 data for simplicity.
+We simulate 100000 paired-end reads, using the Illumina model.
 
 ```sh
 SAMPLE="NA12878"
