@@ -78,6 +78,9 @@ leviosam serialize -v ${SAMPLE}/chr21-${SAMPLE}.vcf.gz -k ${DIR_DATA}/GRCh38.len
 
 ## Align with Bowtie 2
 
+When using major-allele reference and the personalized reference, we pipe the alignment results directory to `leviosam` for smaller disk space usage.
+If you'd like to keep the original alignment. You can use typical alignment commands, and use the `leviosam lift -l <lft> -a <input> -p <out_prefix>` command.
+
 ```sh
 # Build Bowtie 2 indexes
 mkdir bt2_indexes
@@ -97,6 +100,8 @@ bowtie2 -p 8 -x bt2_indexes/${SAMPLE}-chr21-hapA -1 ${R1} -2 ${R2} | leviosam li
 ```
 
 ## Align with bwa-mem
+
+Similar to the Bowtie 2 part, we pipe alignment results directory to `leviosam` if liftover is needed.
 
 ```sh
 # Build bwa mem indexes
@@ -118,7 +123,7 @@ bwa mem -t 8 bwa_indexes/${SAMPLE}-chr21-hapA.fa ${R1} ${R2} | leviosam lift -l 
 
 ## Evaluate
 
-To evaluate alignment concordant, we first lift the simulation profile (in SAM format) so that all results use GRCh38 coordinates.
+To evaluate alignment concordance, we first lift the simulation profile (in SAM format) so that all results use GRCh38 coordinates.
 
 ```sh
 leviosam lift -a ${SAMPLE}/${SAMPLE}-chr21-hapA-mason.sam -l ${SAMPLE}/chr21-${SAMPLE}.lft -p ${SAMPLE}/${SAMPLE}-chr21-hapA-mason-lifted -t 8
