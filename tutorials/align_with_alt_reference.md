@@ -6,14 +6,14 @@ We use 8 threads whenever the program supports multi-threaded processing.
 ## Software and datasets involved in this pipeline
 Software:
 - levioSAM
-- mason2 simulator
-- bcftools
-- samtools
-- Bowtie 2 or Bwa-mem
+- mason2 simulator (v2.0.9)
+- bcftools (v1.11)
+- samtools (v1.11)
+- Bowtie 2 (v2.4.2) or Bwa-mem (v0.7.17-r1188)
 
 Datasets:
 - GRCh38
-- Small variant calls from the 1000 Genomes Project
+- Small variant calls (SNVs and indels) from the 1000 Genomes Project
 - A chromosome name map file (map chromosome name "Z" to "chrZ")
 - A chromosome length map file (provides the length for each chromosome)
 
